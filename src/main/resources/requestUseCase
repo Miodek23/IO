@@ -1,0 +1,48 @@
+[
+  {
+    "tytul": "Jakis tam tytul",
+    "aktorzyZewnetrzni":[
+      {
+        "nazwa": "Bibliotekarz"
+      }
+    ],
+    "system": {
+      "nazwa": "System"
+    },
+    "scenario": {
+      "text": "",
+      "inputText": [
+        "Bibliotekarz aktorzyZewnetrzniwybiera opcje dodania nowej pozycji książkowej\n",
+        "Wyświetla się formularz.\n",
+        "Bibliotekarz podaje dane książki.\n",
+        "IF: Bibliotekarz pragnie dodać egzemplarze książki\n",
+        "\tBibliotekarz wybiera opcję definiowania egzemplarzy\n",
+        "\tSystem prezentuje zdefiniowane egzemplarze\n",
+        "\tFOR EACH egzemplarz:\n",
+        "\t\tBibliotekarz wybiera opcję dodania egzemplarza\n",
+        "\t\tSystem prosi o podanie danych egzemplarza\n",
+        "\t\tBibliotekarz podaje dane egzemplarza i zatwierdza.\n",
+        "\t\tSystem informuje o poprawnym dodaniu egzemplarza i prezentuje zaktualizowaną listę egzemplarzy.\n",
+        "Bibliotekarz zatwierdza dodanie książki.\n",
+        "System informuje o poprawnym dodaniu książki.\n"
+      ],
+      "parent": null
+    }
+  },
+  {
+    "tytul": "Jakis tam tytul",
+    "aktorzyZewnetrzni":[
+      {
+        "nazwa": "Bibliotekarz"
+      }
+    ],
+    "system": {
+      "nazwa": "System"
+    },
+    "scenario": {
+      "text": "",
+      "inputText": "Bibliotekarz wybiera opcje dodania nowej pozycji książkowej\nWyświetla się formularz.\nBibliotekarz podaje dane książki.\nIF: Bibliotekarz pragniedodać egzemplarze książki\n\tBibliotekarz wybiera opcję definiowania egzemplarzy\n\tSystem prezentuje zdefiniowane egzemplarze\n\tFOR EACH egzemplarz:\n\t\tBibliotekarz wybiera opcję dodania egzemplarza\n\t\tSystem prosi o podanie danych egzemplarza\n\t\tBibliotekarz podaje dane egzemplarza i zatwierdza.\n\t\tSystem informuje o poprawnym dodaniu egzemplarza i prezentuje zaktualizowaną listę egzemplarzy.\nBibliotekarz zatwierdza dodanie książki.\nSystem informuje o poprawnym dodaniu książki.\n",
+      "parent": null
+    }
+  }
+]
