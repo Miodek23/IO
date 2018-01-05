@@ -16,7 +16,7 @@ public class KeyWordsVisitor implements StepVisitor {
 
     }
     private void visitStep(Step step){
-        for(String word: getListOfKeyWords()){
+        for(String word: listOfKeyWords){
             if(step.getText().contains(word)){
                 numberOfKeyWords++; //gdyby doszlo do sytuacji, ze w jednym kroku jest kilka slow kluczowych, liczymy to tylko raz
                 break;
@@ -24,7 +24,7 @@ public class KeyWordsVisitor implements StepVisitor {
         }
 
     }
-    public int getNumberOfKeyWord(){
+    public int getNumberOfKeyWords(){
         return this.numberOfKeyWords;
     }
 

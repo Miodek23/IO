@@ -1,30 +1,30 @@
+package pl.put.poznan.transformer.logic;
+
 /** Klasa reprezentująca aktora w scenariuszu (wykonawcę jednego z kroków).
  * @author Oliwia Masian
  * @version 1.0
  */
 
-
-package pl.put.poznan.transformer.logic;
-
 public class Actor {
     /**
      * Przechowuje nazwe aktora
      */
-    private String nazwa;
+    private String name;
+
     /**
      * Tworzy nowy obiekt aktora
      * @param nazwa nazwa aktora
      */
 
     public Actor(String nazwa) {
-        this.nazwa = nazwa;
+        this.name = nazwa;
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public String getName() {
+        return name;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public void setName(String nazwa) {
+        this.name = nazwa;
     }
 }

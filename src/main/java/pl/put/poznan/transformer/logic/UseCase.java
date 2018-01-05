@@ -132,8 +132,7 @@ public class UseCase {
         KeyWordsVisitor visitorKey = new KeyWordsVisitor();
         visitorKey.setListOfKeyWords(slowaKluczowe);
         scenario2.accept(visitorKey);
-        System.out.println("Ile kroków zawiera słowa kluczowe: " + visitorKey.getNumberOfKeyWord());
-
+        System.out.println("Ile kroków zawiera słowa kluczowe: " + visitorKey.getNumberOfKeyWords());
 
 
     }
