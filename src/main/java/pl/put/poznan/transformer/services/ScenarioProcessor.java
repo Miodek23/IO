@@ -1,6 +1,7 @@
 package pl.put.poznan.transformer.services;
 
 import org.springframework.stereotype.Service;
+import pl.put.poznan.transformer.model.ProcessedScenario;
 import pl.put.poznan.transformer.model.Scenario;
 import pl.put.poznan.transformer.model.UseCase;
 import pl.put.poznan.transformer.services.visitors.KeyWordsVisitor;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Service
 public class ScenarioProcessor {
-    public void processScenario(UseCase useCase) {
+    public ProcessedScenario processScenario(UseCase useCase) {
         Scenario scenario = new Scenario(
                 useCase.getScenario().getText(),
                 useCase.getScenario().getInputText(),
@@ -41,5 +42,15 @@ public class ScenarioProcessor {
         visitorKey.setListOfKeyWords(slowaKluczowe);
         scenario.accept(visitorKey);
         System.out.println("Ile kroków zawiera słowa kluczowe: " + visitorKey.getNumberOfKeyWord());
+
+        ProcessedScenario processedScenario =
+                new ProcessedScenario(
+                        visitor.getOutputList(),
+                        visitorTab.getOutputList(),
+                        visitorNumber.getNumberOfPoints(),
+                        visitorKey.getNumberOfKeyWord());
+
+        return processedScenario;
+
     }
 }
