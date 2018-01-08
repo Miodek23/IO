@@ -1,9 +1,12 @@
 package pl.put.poznan.transformer.services;
 
 import org.springframework.stereotype.Service;
+import pl.put.poznan.transformer.model.Scenario;
 import pl.put.poznan.transformer.model.UseCase;
 import pl.put.poznan.transformer.services.visitors.KeyWordsVisitor;
+import pl.put.poznan.transformer.services.visitors.NumberOfPointsInScenarioVisitor;
 import pl.put.poznan.transformer.services.visitors.ScenarioInPointsVisitor;
+import pl.put.poznan.transformer.services.visitors.ScenarioInPointsWithTabsVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +14,24 @@ import java.util.List;
 @Service
 public class ScenarioProcessor {
     public void processScenario(UseCase useCase) {
-        System.out.println("text: " + useCase.getScenario().getText());
-        useCase.getAktorzyZewnetrzni().forEach(actor -> System.out.println(actor.getNazwa()));
-        System.out.println("system name: " + useCase.getSystem().getNazwa());
-        System.out.println("scenario title: " + useCase.getTytul());
-        System.out.println("input text: " + useCase.getScenario().getInputText());
+        Scenario scenario = new Scenario(
+                useCase.getScenario().getText(),
+                useCase.getScenario().getInputText(),
+                useCase.getScenario().getParent()
+        );
 
-        ScenarioInPointsVisitor visitor2 = new ScenarioInPointsVisitor();
-        useCase.getScenario().accept(visitor2);
-        System.out.println(visitor2.getOutputList());
+        ScenarioInPointsVisitor visitor = new ScenarioInPointsVisitor();
+        scenario.accept(visitor);
+        System.out.println("scenario in points: " + "\n" + visitor.getOutputList());
+
+        ScenarioInPointsWithTabsVisitor visitorTab = new ScenarioInPointsWithTabsVisitor();
+        scenario.accept(visitorTab);
+        System.out.println("scenario in points with tabs: " + "\n" + visitorTab.getOutputList());
+
+        NumberOfPointsInScenarioVisitor visitorNumber = new NumberOfPointsInScenarioVisitor();
+        scenario.accept(visitorNumber);
+        System.out.println("Scenario's points: " + visitorNumber.getNumberOfPoints());
+
         List<String> slowaKluczowe = new ArrayList<>();
         slowaKluczowe.add("IF");
         slowaKluczowe.add("ELSE");
@@ -27,7 +39,7 @@ public class ScenarioProcessor {
 
         KeyWordsVisitor visitorKey = new KeyWordsVisitor();
         visitorKey.setListOfKeyWords(slowaKluczowe);
-        useCase.getScenario().accept(visitorKey);
+        scenario.accept(visitorKey);
         System.out.println("Ile kroków zawiera słowa kluczowe: " + visitorKey.getNumberOfKeyWord());
     }
 }
