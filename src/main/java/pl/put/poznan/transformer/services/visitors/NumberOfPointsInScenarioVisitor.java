@@ -16,6 +16,7 @@ public class NumberOfPointsInScenarioVisitor implements StepVisitor {
     public void visisitScenario(Scenario scenario) {
         visitStep(scenario);
     }
+
     private void visitStep(Step step){
         numberOfPoints += 1;
     }
