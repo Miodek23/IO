@@ -64,6 +64,8 @@ public class PrzykladMozeciePotemUsunac {
         ScenarioInPointsWithTabsVisitor visitorTab = new ScenarioInPointsWithTabsVisitor();
         scenario.accept(visitorTab);
         System.out.println(visitorTab.getOutputList());
+
+        /** Sprawdzanie ile kroków zawiera słowa kluczowe **/
         NumberOfPointsInScenarioVisitor visitorNumber = new NumberOfPointsInScenarioVisitor();
         scenario.accept(visitorNumber);
         System.out.println("Scenariusz ma liczbe punktow rowna: "+   visitorNumber.getNumberOfPoints());
@@ -95,7 +97,7 @@ public class PrzykladMozeciePotemUsunac {
         scenario2.accept(visitor2);
         System.out.println(visitor2.getOutputList());
 
-
+        /** Sprawdzanie ile kroków zawiera słowa kluczowe **/
         List<String> slowaKluczowe = new ArrayList<String>();
         slowaKluczowe.add("IF");
         slowaKluczowe.add("ELSE");
@@ -106,11 +108,12 @@ public class PrzykladMozeciePotemUsunac {
         System.out.println("Ile kroków zawiera słowa kluczowe: " +   visitorKey.getNumberOfKeyWord());
 
 
+        /** NOWE: POBRANIE DO OKRESLONEGO POZIOMU **/
         ScenarioToCertainDepthVisitor vistorDepth = new ScenarioToCertainDepthVisitor(2);
         scenario2.accept(vistorDepth);
         System.out.println(vistorDepth.getOutputList());
 
-
+        /** NOWE: SPRAWDZENIA KTÓRE KROKI NIE ROZPOCZYNAJĄ SIĘ OD AKTORA **/
         PointsWithoutActorVisitor visitorActor = new PointsWithoutActorVisitor();
         List<Actor> actors = new ArrayList<Actor>(aktorzy); // UWAGA! kopiuje zawartosc listy aktorzy (ma Bibliotekarza_
         actors.add(system); // UWAGA! i dorzucam do tej listy System

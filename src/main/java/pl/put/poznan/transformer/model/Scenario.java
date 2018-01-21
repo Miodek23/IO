@@ -28,7 +28,9 @@ public class Scenario implements Step {
      */
     private Scenario parent;
 
-
+    /**
+     * Surowy tekst, z którego powstanie złożona struktura scenariusza
+     */
     private String inputText;
 
     /**
