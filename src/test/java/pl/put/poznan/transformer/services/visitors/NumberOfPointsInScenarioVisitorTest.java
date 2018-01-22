@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 public class NumberOfPointsInScenarioVisitorTest {
 
+
+
     @Test
     public void testGetNumberOfPoints() {
 
